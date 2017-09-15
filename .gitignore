@@ -1,0 +1,11 @@
+node_modules
+.npmignore
+.eslintignore
+config.json
+package.json
+stuff.js
+Makefile
+jpeg.jpg
+package-lock.json
+commands/website.js
+commands/invite.js
