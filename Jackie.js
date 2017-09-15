@@ -47,7 +47,7 @@ bot.on('guildDelete', (guild) =>{
 
 bot.on('message', msg => {
   if (msg.author.bot || !msg.content.startsWith(prefix)) return;
-
+  if(bot.user.id !== "327135412806221826" || prefix !== "+-") return;
   const args = msg.content.split(" ").slice(1).join(" ")
   const command = msg.content.split(" ").shift().slice(prefix.length)
   var user = msg.mentions.users.first();
