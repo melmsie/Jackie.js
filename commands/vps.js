@@ -12,8 +12,8 @@ if(msg.author.id !== "280158289667555328"){
 		}else
 	if(args.startsWith("reboot")||args.startsWith("restart")){
 		msg.channel.send("Restarting VPS... This should take up to 2 minutes.")
-	ovh.request('POST', '/vps/{serviceName}/reboot', {
-  serviceName: 'vps145412.vps.ovh.ca'
+	ovh.request("POST", "/vps/{serviceName}/reboot", {
+  serviceName: config.ovh.serviceName
  }, function (err, result) {
   console.log(err || result);
 });
