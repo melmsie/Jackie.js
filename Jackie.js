@@ -2,33 +2,33 @@ const discord = require("discord.js");
 const bot = new discord.Client();
 const client = bot
 var config = require("./config.json")
-var prefix = config.prefix
-var ownerID = config.ownerID
-let dBots = config.botsd
-let lsbots = config.lbots
-let msbots = config.mbots
-var oliyBots = config.oliy
-const snekfetch = require('snekfetch');
+var prefix = config.prefix;
+var ownerID = config.ownerID;
+let dBots = config.botsd;
+let lsbots = config.lbots;
+let msbots = config.mbots;
+var oliyBots = config.oliy;
+const snekfetch = require("snekfetch");
 function serverCount() {
-  client.shard.fetchClientValues('guilds.size').then(result => {
+  client.shard.fetchClientValues("guilds.size").then(result => {
   const guildsizes = result.reduce((prev, val) => prev + val, 0)
       snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
-          .set('Authorization', oliyBots)
+          .set("Authorization", oliyBots)
           .send({"server_count": guildsizes})
           .then(console.log("[oliyBots] Post Stats!"))
 
   snekfetch.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
-      .set('Authorization', dBots)
+      .set("Authorization", dBots)
       .send({"server_count": client.guilds.size})
       .then(console.log("[dBots] Post Stats!"))
   snekfetch.post(`https://list.passthemayo.space/api/bots/${client.user.id}`)
-	    .set('Authorization',lsbots)
+	    .set("Authorization",lsbots)
 		.send({"server_count": guildsizes})
 		.then(console.log("[lbots] Post Stats!"))
    snekfetch.post(`https://novo.archbox.pro/api/bots/${client.user.id}`)
 		        .set("Authorization", msbots)
 		        .send({"server_count":guildsizes})
-	          .then(console.log("[mbots] Post Stats!"))
+	          .then(console.log("[mbots] Post Stats!"));
  	})
 }
 
