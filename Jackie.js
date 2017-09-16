@@ -21,10 +21,6 @@ function serverCount() {
       .set("Authorization", dBots)
       .send({"server_count": client.guilds.size})
       .then(console.log("[dBots] Post Stats!"))
-  snekfetch.post(`https://list.passthemayo.space/api/bots/${client.user.id}`)
-	    .set("Authorization",lsbots)
-		.send({"server_count": guildsizes})
-		.then(console.log("[lbots] Post Stats!"))
    snekfetch.post(`https://novo.archbox.pro/api/bots/${client.user.id}`)
 		        .set("Authorization", msbots)
 		        .send({"server_count":guildsizes})
@@ -46,7 +42,7 @@ bot.on('guildDelete', (guild) =>{
 });
 
 bot.on('message', msg => {
-  if (msg.author.bot || !msg.content.startsWith(prefix) || bot.user.id !== "327135412806221826" || prefix !== "+-"){ 
+  if (msg.author.bot || !msg.content.startsWith(prefix) || bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){ 
 		return;
 	}
   const args = msg.content.split(" ").slice(1).join(" ")
