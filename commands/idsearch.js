@@ -3,7 +3,7 @@ var config =  require("../config.json")
 exports.run = (bot, msg, args) =>{
   	var opts = {
   maxResults: 5,
-  key: config.ytkey,
+  key: config.keys.ytkey,
   order: "relevance"
 };
  

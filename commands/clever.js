@@ -2,7 +2,7 @@ var config = require("../config.json")
 exports.run = (bot, msg, args) => {
   var Cleverbot = require('cleverbot-node');  
  var cleverbot = new Cleverbot;
-    cleverbot.configure({botapi: config.cleverkey});
+    cleverbot.configure({botapi: config.keys.cleverkey});
     cleverbot.write(args, function (response) {
           msg.channel.startTyping();
       setTimeout(() => {

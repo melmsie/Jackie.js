@@ -4,10 +4,9 @@ const client = bot
 var config = require("./config.json")
 var prefix = config.prefix;
 var ownerID = config.ownerID;
-let dBots = config.botsd;
-let lsbots = config.lbots;
-let msbots = config.mbots;
-var oliyBots = config.oliy;
+let dBots = config.bots.botsd;
+let msbots = config.bots.mbots;
+var oliyBots = config.bots.oliy;
 const snekfetch = require("snekfetch");
 function serverCount() {
   client.shard.fetchClientValues("guilds.size").then(result => {
@@ -31,14 +30,17 @@ function serverCount() {
 bot.on('ready', () => {   
 	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
   serverCount();
+  bot.channels.get(config.logger.shardchannel).send(`I'm Ready!`) 
 })
 bot.on('guildCreate', (guild) =>{
 	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
 	serverCount();
+  bot.channels.get(config.logger.createchannel).send(`Joined a new server! Guild Name: ${guild.name}`) 
 });
 bot.on('guildDelete', (guild) =>{
 	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
 	serverCount();
+  bot.channels.get(config.logger.deletechannel).send(`Lefted a server! Guild Name: ${guild.name}`)
 });
 
 bot.on('message', msg => {
@@ -56,4 +58,4 @@ bot.on('message', msg => {
       console.error(err);
    }
 });
-bot.login(config.token);
+bot.login(config.keys.token);
