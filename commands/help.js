@@ -21,6 +21,7 @@ xd (text) - Puts text into a XD shape cause xd         
 clapify (text) - your text with:clap:clap emojis.
 eyeify (text) - Your text now:eyes:has:eyes:a:eyes:witness.
 machine (text) - :b:ROKE.
+clever (text) - talk to a bot lul
 **Music**
 play (id or youtube link): Plays Music :microphone: from a youtube link or id. 
 idsearch (text): Searchs for a Youtube ID. :mag:
