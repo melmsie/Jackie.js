@@ -4,10 +4,23 @@ const client = bot
 var config = require("./config.json")
 var prefix = config.prefix;
 var ownerID = config.ownerID;
+var logger = require("./logger.js")
 let dBots = config.bots.botsd;
 let msbots = config.bots.mbots;
+let games = require("./games.json");
 var oliyBots = config.bots.oliy;
 const snekfetch = require("snekfetch");
+/*
+@author : Hansen
+      _            _    _      
+     | | __ _  ___| | _(_) ___ 
+  _  | |/ _` |/ __| |/ / |/ _ \
+ | |_| | (_| | (__|   <| |  __/
+  \___/ \__,_|\___|_|\_\_|\___|
+                                 
+Big Help: August!
+Thanks to august for command handler.
+*/
 function serverCount() {
   client.shard.fetchClientValues("guilds.size").then(result => {
   const guildsizes = result.reduce((prev, val) => prev + val, 0)
@@ -26,28 +39,33 @@ function serverCount() {
 	          .then(console.log("[mbots] Post Stats!"));
  	})
 }
+function setgame(){
+	let gamesnum = Math.floor(Math.random() * games.length)
+bot.user.setPresence({ game: { name: games[gamesnum] + " |+-help", type: 0 } });
+	}
 
-bot.on('ready', () => {   
-	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
+bot.on('ready', () => {
   serverCount();
+	setgame();
   bot.channels.get(config.logger.shardchannel).send(`I'm Ready!`) 
 })
 bot.on('guildCreate', (guild) =>{
-	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
+	setgame();
 	serverCount();
   bot.channels.get(config.logger.createchannel).send(`Joined a new server! Guild Name: ${guild.name}`) 
 });
 bot.on('guildDelete', (guild) =>{
-	bot.user.setPresence({ game: { name: `+-help|${bot.guilds.size} servers|${client.shard.count}/${client.shard.id}`, type: 0 } });
+		setgame();
 	serverCount();
   bot.channels.get(config.logger.deletechannel).send(`Lefted a server! Guild Name: ${guild.name}`)
 });
 
 bot.on('message', msg => {
-  if (msg.author.bot || !msg.content.startsWith(prefix) || bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){ 
+	if (msg.author.bot || !msg.content.startsWith(prefix) || bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){ 
 		return;
 	}
-  const args = msg.content.split(" ").slice(1).join(" ")
+  setgame();
+	const args = msg.content.split(" ").slice(1).join(" ")
   const command = msg.content.split(" ").shift().slice(prefix.length)
   var user = msg.mentions.users.first();
  console.log(command)
@@ -55,7 +73,7 @@ bot.on('message', msg => {
      let commandFile = require(`./commands/${command}.js`)
      commandFile.run(bot, msg, args, user)
     } catch (err) {
-      console.error(err);
+      logger.warn(err);
    }
 });
 bot.login(config.keys.token);
