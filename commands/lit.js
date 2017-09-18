@@ -2,30 +2,32 @@ let Jimp = require("jimp")
 exports.run = (bot, msg, args) => {
 	let url = args
 	let user = msg.mentions.users.first();
-	function jpeg(url) {
+	function lit(url) {
 		Jimp.read(url, function(err, image) {
 			if (err) {
 				msg.reply("I FOUND A ERR " + err)
 				return
 			} else
-				image.quality(1)
-				.quality(1)
-				.write("./jpeg.jpg")
-			msg.channel.send({
+				image.color([
+    { apply: 'lighten', params: [ 50 ] }
+])
+				.write("./lit.jpg")
+		msg.channel.send({
 				files: [{
-					attachment: "./jpeg.jpg",
-					name: 'jpeg.jpg'
+					attachment: "./lit.jpg",
+					name: 'lit.png'
 				}]
-			});
+			});	
 		})
+		
 	}
 	if (!url.startsWith("http")) {
 		if (!user) {
 			url = msg.attachments.first().url
-			jpeg(url)
+			lit(url)
 		} else
 			url = user.avatarURL
-		jpeg(url)
+		lit(url)
 	} else
-		jpeg(url)
+		lit(url)
 }

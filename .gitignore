@@ -6,6 +6,7 @@ package.json
 stuff.js
 Makefile
 jpeg.jpg
+lit.jpg
 package-lock.json
 commands/website.js
 commands/invite.js

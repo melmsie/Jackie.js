@@ -19,7 +19,7 @@ const snekfetch = require("snekfetch");
   \___/ \__,_|\___|_|\_\_|\___|
                                  
 Big Help: August!
-Thanks to august for command handler.
+Thanks to august for command handler and logger. <3
 */
 function serverCount() {
   client.shard.fetchClientValues("guilds.size").then(result => {
