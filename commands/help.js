@@ -27,6 +27,7 @@ play (id or youtube link): Plays Music :microphone: from a youtube link or id.
 idsearch (text): Searchs for a Youtube ID. :mag:
 stop: stops music.
 ***Image***
-jpeg <attachment or @user or url or use https://www.image.jackiejs.xyz for a url>`
+jpeg <attachment or @user or url or use https://www.images.jackiejs.xyz for a url)
+lit (attachment or @user or url or use https://www.images.jackiejs.xyz for a url)`
 msg.author.send(helppls)
 }
