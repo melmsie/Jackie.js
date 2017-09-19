@@ -1,6 +1,7 @@
 const discord = require("discord.js");
 const bot = new discord.Client();
 const client = bot
+const fs = require("fs");
 var config = require("./config.json")
 var prefix = config.prefix;
 var ownerID = config.ownerID;
@@ -63,7 +64,14 @@ bot.on('guildDelete', (guild) =>{
 bot.on('message', msg => {
 	if (msg.author.bot || !msg.content.startsWith(prefix) || bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){ 
 		return;
-	}
+	} else
+	if(bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){
+		return msg.reply("This is a stolen bot.")
+	}else
+ if(msg.author.id === "172571295077105664"){
+	 msg.reply("why are you even using this oml")
+  return;
+ }else
   setgame();
 	const args = msg.content.split(" ").slice(1).join(" ")
   const command = msg.content.split(" ").shift().slice(prefix.length)
