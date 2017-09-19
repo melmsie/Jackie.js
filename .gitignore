@@ -8,5 +8,4 @@ Makefile
 jpeg.jpg
 lit.jpg
 package-lock.json
-commands/website.js
-commands/invite.js
+package.json
