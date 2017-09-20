@@ -3,6 +3,7 @@ let helppls = `
 () = required
 <> = optional
 If something is not working, Join this server. : https://discord.gg/gZTaH4p
+Use this for a image url: https://images.jackiejs.xyz
 ***Core***
 Help - Shows commands
 Info - Shows Bots Infomation :information_desk_person:        
@@ -14,7 +15,7 @@ reload (text) -    ^
 vps (text) -       ^
 exe (text) -       ^
 ***Fun Commands***
-diceroll - rolls a 6 sided dice. :game_die:
+diceroll <number> - rolls a 6 sided dice or a die with the number of sides you choose. :game_die:
 thot (@user) - shows how much of a thot you are :peach:
 ascii (text) - turn text into ascii text lmao 
 xd (text) - Puts text into a XD shape cause xd         
@@ -23,11 +24,12 @@ eyeify (text) - Your text now:eyes:has:eyes:a:eyes:witness.
 machine (text) - :b:ROKE.
 clever (text) - talk to a bot lul
 **Music**
-play (id or youtube link): Plays Music :microphone: from a youtube link or id. 
+play (id or youtube link): Plays Music :microphone: from a youtube link or id.
 idsearch (text): Searchs for a Youtube ID. :mag:
 stop: stops music.
 ***Image***
-jpeg <attachment or @user or url or use https://www.images.jackiejs.xyz for a url)
-lit (attachment or @user or url or use https://www.images.jackiejs.xyz for a url)`
+jpeg (attachment or @user or url)
+lit (attachment or @user or url)
+invert (attachment or @user or url)`
 msg.author.send(helppls)
 }
