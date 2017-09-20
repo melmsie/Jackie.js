@@ -1,4 +1,4 @@
-var jimp = require("jimp")
+var Jimp = require("jimp")
 exports.run = (bot, msg, args) => {
 	let url = args
 	let user = msg.mentions.users.first();
