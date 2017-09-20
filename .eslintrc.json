@@ -2,13 +2,5 @@
     "env": {
         "es6": true,
         "node": true
-    }, 
-  "quotes": [
-            "warn",
-            "double"
-        ],
-        "semi": [
-            "warn",
-            "always"
-        ]
+      }
 }
