@@ -15,6 +15,7 @@ reload (text) -    ^
 vps (text) -       ^
 exe (text) -       ^
 ***Fun Commands***
+mm - can i acquire :b:epsi
 diceroll <number> - rolls a 6 sided dice or a die with the number of sides you choose. :game_die:
 thot (@user) - shows how much of a thot you are :peach:
 ascii (text) - turn text into ascii text lmao 
