@@ -1,14 +1,18 @@
 const fig = require("figlet")
 exports.run = (bot, msg, args) => {
-      let result = args
-		if (result.length > 7) {     
+if(args.length < 1){
+	msg.reply("Say something to make into ascii smh")
+  return;
+}else
+		if (args.length > 7) {     
 			msg.channel.send("Sorry, But I only support 7 characters.");     
 			return;   
 		} else
 
-			var asciiText = fig.textSync(result);   
+			var asciiText = fig.textSync(args);   
 
 		msg.channel.send(asciiText, {   
 			code: true 
 		})  
+
 }

@@ -1,5 +1,6 @@
 var config = require("../config.json")
 var ownerID = config.ownerID
+let logger = require("../logger.js")
 function clean(text) { 
 	if (typeof(text) === "string")    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203)); 
 	else      return text;
@@ -19,7 +20,7 @@ if (msg.author.id !== ownerID) return;   
 			});   
 		} catch (err) {     
 			msg.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);   
-			console.log(err)
+			logger.warn(err)
 		}
 // code here
 }

@@ -1,13 +1,11 @@
 /**
  * @file A logger for fancy logging.
- * @Author: Dr.Taiki
- * @Actual Author: August
- * @Credit: August
+ * @author: August
  */
 const chalk = require('chalk');
 
 class Logger {
-    
+
     /**
      * Information logging
      * @param {String} message - The message to print out
@@ -34,7 +32,7 @@ class Logger {
     static error (message) {
         return console.log(chalk.bgRed('[ERROR]'), chalk.red(message));
     }
-    
+
 }
 
 module.exports = Logger;
