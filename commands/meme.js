@@ -1,6 +1,6 @@
 let Jimp = require("jimp")
 exports.run = (bot, msg, args) => {
-		Jimp.read("../images/mememan.jpg", function(err, image) {
+		Jimp.read("https://www.api.jackiejs.xyz/imgen/mememan.jpg", function(err, image) {
 			if (err) {
 				msg.reply("I FOUND A ERR " + err)
 				return
