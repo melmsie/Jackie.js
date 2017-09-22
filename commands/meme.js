@@ -11,7 +11,7 @@ exports.run = (bot, msg, args) => {
 })
 		msg.channel.send({
 				files: [{
-					attachment: "./mm.jpg",
+					attachment: "../mm.jpg",
 					name: 'meme_man_says.jpeg'
 				}]
 			});
