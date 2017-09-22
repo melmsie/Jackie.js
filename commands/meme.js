@@ -1,0 +1,19 @@
+let Jimp = require("jimp")
+exports.run = (bot, msg, args) => {
+		Jimp.read("../images/mememan.jpg", function(err, image) {
+			if (err) {
+				msg.reply("I FOUND A ERR " + err)
+				return
+			} else
+      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
+  image.print(font, 10, 10, "Hello world!")
+       .write("./mm.jpg");
+})
+		msg.channel.send({
+				files: [{
+					attachment: "./mm.jpg",
+					name: 'meme_man_says.jpeg'
+				}]
+			});
+		})
+}
