@@ -72,10 +72,6 @@ bot.on('message', msg => {
 	if(bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){
 		return msg.reply("This is a stolen bot.")
 	}else
- if(msg.author.id === "172571295077105664"){
-	 msg.reply("why are you even using this go back to something important smh :weary:")
-  return;
- }else
   setgame();
 	const args = msg.content.split(" ").slice(1).join(" ")
   const command = msg.content.split(" ").shift().slice(prefix.length)
