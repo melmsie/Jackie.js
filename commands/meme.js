@@ -5,8 +5,8 @@ exports.run = (bot, msg, args) => {
 				msg.reply("I FOUND A ERR " + err)
 				return
 			} else
-      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
-  image.print(font, 200, 100, args)
+      Jimp.loadFont(Jimp.FONT_SANS_16_WHITE).then(function (font) {
+  image.print(font, 250, 550, args)
        .write("./mm.jpg");
 			 msg.channel.send({
 			 		 files: [{
