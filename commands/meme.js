@@ -5,6 +5,10 @@ exports.run = (bot, msg, args) => {
 				msg.reply("I FOUND A ERR " + err)
 				return
 			} else
+			if(args.length > 27){
+				msg.channel.send("meme man can't say too much smh");
+				return;
+			}else
       Jimp.loadFont(Jimp.FONT_SANS_32_WHITE).then(function (font) {
   image.print(font, 300, 160, args)
        .write("./mm.jpg");

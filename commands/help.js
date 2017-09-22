@@ -31,6 +31,7 @@ stop: stops music.
 ***Image***
 jpeg (attachment or @user or url)
 lit (attachment or @user or url)
-invert (attachment or @user or url)`
+invert (attachment or @user or url)
+meme (text that is than 27 characters)`
 msg.author.send(helppls)
 }
