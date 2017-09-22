@@ -8,14 +8,15 @@ exports.run = (bot, msg, args) => {
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
   image.print(font, 10, 10, args)
        .write("./mm.jpg");
+			 msg.channel.send({
+			 		 files: [{
+			 			 attachment: "./mm.jpg",
+			 			 name: 'meme_man_says.jpg'
+			 		 }]
+			 	 })
 })
-		
+
 		})
-	.then(() => msg.channel.send({
-				files: [{
-					attachment: "./mm.jpg",
-					name: 'meme_man_says.jpg'
-				}]
-			})
-		)
+
+
 }
