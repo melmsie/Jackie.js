@@ -6,7 +6,7 @@ exports.run = (bot, msg, args) => {
 				return
 			} else
       Jimp.loadFont(Jimp.FONT_SANS_32_WHITE).then(function (font) {
-  image.print(font, 250, 160, args)
+  image.print(font, 300, 160, args)
        .write("./mm.jpg");
 			 msg.channel.send({
 			 		 files: [{
