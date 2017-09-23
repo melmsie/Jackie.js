@@ -32,7 +32,7 @@ stop: stops music.
 jpeg (attachment or @user or url)
 lit (attachment or @user or url)
 invert (attachment or @user or url)
-meme (text that is than 27 characters)
+meme (text that less is than 27 characters)
 stupid (attachment or @user or url)
 delet (attachment or @user or url)
 hell (attachment or @user or url)`
