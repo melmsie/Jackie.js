@@ -4,8 +4,7 @@ exports.run = (bot, msg , args) =>{
 	let user = msg.mentions.users.first();
 	function stupuid(url) {
 	let img =	jimp.read("https://www.api.jackiejs.xyz/imgen/stupid.png")
-  let img2 = jimp.read(url)
-  img2.resize(150,150)
+  let img2 = jimp.read(url).resize(150 , 150)
   img.composite(img2, 10 , 90);
   img.write("./stupid.jpg")
       msg.channel.send({
