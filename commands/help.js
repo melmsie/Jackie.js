@@ -35,6 +35,7 @@ invert (attachment or @user or url)
 meme (text that less is than 27 characters)
 stupid (attachment or @user or url)
 delet (attachment or @user or url)
-hell (attachment or @user or url)`
+hell (attachment or @user or url)
+cancer (attachment or @user or url)`
 msg.author.send(helppls)
 }
