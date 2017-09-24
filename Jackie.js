@@ -10,6 +10,7 @@ let dBots = config.bots.botsd;
 let msbots = config.bots.mbots;
 let games = require("./games.json");
 var oliyBots = config.bots.oliy;
+let botds = config.bots.botdss
 const snekfetch = require("snekfetch");
 /*
 @author : Hansen
@@ -38,7 +39,11 @@ function serverCount() {
    snekfetch.post(`https://novo.archbox.pro/api/bots/${client.user.id}`)
 		        .set("Authorization", msbots)
 		        .send({"server_count":guildsizes})
-	          .then(console.log("[mbots] Post Stats!"));
+	          .then(console.log("[mbots] Post Stats!"))
+    snekfetch.post(`https://bots.discordlist.net/api.php`)
+         		        .set("token", botds)
+         		        .send({"server_count":guildsizes})
+         	          .then(console.log("[botds] Post Stats!"));
  	})
 }
 
