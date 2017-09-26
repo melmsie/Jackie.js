@@ -1,12 +1,11 @@
 const express = require("express")
 const app = express()
-const path = require("path")
 
 app.use(express.static('website'))
 app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname+'/index.html'))
+    let data = {
+        'uptime': formatTime(process.uptime()),
+        'ram': (process.memoryUsage().rss / 1024 / 1024).toFixed(2)
+    }
+    res.status(200).send(source(data))
 })
-app.get('/commands',(req,res)=>{
-  res.status(200).sendFile(path.join(__dirname+'/index.html'))
-})
-app.listen('80', console.log('Server ready.'))
