@@ -17,7 +17,7 @@ exports.run = (bot, msg , args) =>{
   })
 })
 		}
-
+// hai there, stop looking at my images pls thanks
 	if (!url.startsWith("http")) {
 		if (!user) {
 			url = msg.attachments.first().url
