@@ -7,6 +7,7 @@ var prefix = config.prefix;
 var ownerID = config.ownerID;
 var logger = require("./logger.js")
 let dBots = config.bots.botsd;
+let monsters = "melmsie and aeth, they are scary and means"
 let msbots = config.bots.mbots;
 let games = require("./games.json");
 var oliyBots = config.bots.oliy;

@@ -3,6 +3,7 @@ exports.run = (bot, msg , args) =>{
   let url = args
 	let user = msg.mentions.users.first();
 	function cancer(url) {
+
 	jimp.read("https://www.api.jackiejs.xyz/imgen/cancer.png", function (err, image) {
     jimp.read(url, function (err, img) {
        img.resize(320 , 377)
@@ -14,8 +15,8 @@ exports.run = (bot, msg , args) =>{
                name: 'cancer.jpg'
              }]
            });
+			});
   })
-})
 		}
 // hai there, stop looking at my images pls thanks
 	if (!url.startsWith("http")) {

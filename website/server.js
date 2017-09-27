@@ -7,6 +7,6 @@ app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname+'/index.html'))
 })
 app.get('/commands',(req,res)=>{
-  res.status(200).sendFile(path.join(__dirname+'/index.html'))
+  res.status(200).sendFile(path.join(__dirname+'/commands.html'))
 })
 app.listen('80', console.log('Server ready.'))
