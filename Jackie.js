@@ -13,12 +13,6 @@ let games = require("./games.json");
 var oliyBots = config.bots.oliy;
 let botds = config.bots.botdss
 const snekfetch = require("snekfetch");
-const dd = require("datadog-metrics")
-var metricsLogger = new dd.BufferedMetricsLogger({
-    apiKey: config.keys.dd,
-    prefix: 'jj.',
-    flushIntervalSeconds: 15
-});
 /*
 @author : Hansen
       _            _    _
@@ -53,19 +47,12 @@ function serverCount() {
          	          .then(console.log("[botds] Post Stats!"));
  	})
 }
-function ddd(){
-  client.shard.fetchClientValues("guilds.size").then(result => {
-  const guildsizes = result.reduce((prev, val) => prev + val, 0)
-  metricsLogger.gauge('guilds', guildsizes);
-})
-}
 function setgame(){
 	let gamesnum = Math.floor(Math.random() * games.length)
 bot.user.setPresence({ game: { name: games[gamesnum] + " |+-help", type: 0 } });
 	}
 
 bot.on('ready', () => {
- ddd();
   serverCount();
 	setgame();
   bot.channels.get(config.logger.shardchannel).send(`I'm Ready!`)
