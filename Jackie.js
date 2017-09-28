@@ -13,6 +13,12 @@ let games = require("./games.json");
 var oliyBots = config.bots.oliy;
 let botds = config.bots.botdss
 const snekfetch = require("snekfetch");
+const dd = require("datadog-metrics")
+var metricsLogger = new dd.BufferedMetricsLogger({
+    apiKey: config.keys.dd,
+    prefix: 'jj.',
+    flushIntervalSeconds: 15
+});
 /*
 @author : Hansen
       _            _    _
@@ -47,13 +53,19 @@ function serverCount() {
          	          .then(console.log("[botds] Post Stats!"));
  	})
 }
-
+function ddd(){
+  client.shard.fetchClientValues("guilds.size").then(result => {
+  const guildsizes = result.reduce((prev, val) => prev + val, 0)
+  metricsLogger.gauge('guilds', guildsizes);
+})
+}
 function setgame(){
 	let gamesnum = Math.floor(Math.random() * games.length)
 bot.user.setPresence({ game: { name: games[gamesnum] + " |+-help", type: 0 } });
 	}
 
 bot.on('ready', () => {
+ ddd();
   serverCount();
 	setgame();
   bot.channels.get(config.logger.shardchannel).send(`I'm Ready!`)
@@ -76,15 +88,14 @@ bot.on('message', msg => {
 		return;
 	} else
 	if(bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){
-		return msg.reply("This is a stolen bot.")
+		return msg.reply("This is a stolen bot.");
 	}else
-  setgame();
-	const args = msg.content.split(" ").slice(1).join(" ")
-  const command = msg.content.split(" ").shift().slice(prefix.length)
   var user = msg.mentions.users.first();
+  const args = msg.content.split(" ").slice(1).join(" ")
+  const command = msg.content.split(" ").shift().slice(prefix.length)
   try {
      let commandFile = require(`./commands/${command}.js`)
-     commandFile.run(bot, msg, args, user)
+    commandFile.run(bot, msg, args, user)
     } catch (err) {
       logger.warn(err);
    }
