@@ -2,7 +2,6 @@ let Jimp = require("jimp")
 exports.run = (bot, msg, args) => {
 	let url = args
 	let user = msg.mentions.users.first();
- let attach = msg.attachments.first().url
 	function jpeg(url) {
 		Jimp.read(url, function(err, image) {
 			if (err) {
@@ -20,13 +19,9 @@ exports.run = (bot, msg, args) => {
 			});
 		})
 	}
-	if(args.length < 1 && !user && !attach){
-	  msg.channel.send("i cant find a attachment, user or image url.")
-	  return;
-	}else
 	if (!url.startsWith("http")) {
 		if (!user) {
-			url = attach
+			url = msg.attachments.first().url
 			jpeg(url)
 		} else
 			url = user.avatarURL

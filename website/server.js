@@ -9,4 +9,8 @@ app.get('/', (req, res) => {
 app.get('/commands',(req,res)=>{
   res.status(200).sendFile(path.join(__dirname+'/commands.html'))
 })
+app.get('/usage',(req,res)=>{
+  let data = `nothing yet smh`
+  res.status(200).send(data)
+})
 app.listen('80', console.log('Server ready.'))

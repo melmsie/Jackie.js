@@ -2,7 +2,6 @@ let jimp = require("jimp")
 exports.run = (bot, msg , args) =>{
   let url = args
 	let user = msg.mentions.users.first();
-  let attach = msg.attachments.first().url
 	function hell(url) {
 	jimp.read("https://www.api.jackiejs.xyz/imgen/hell.png", function (err, image) {
     jimp.read(url, function (err, img) {
@@ -18,13 +17,9 @@ exports.run = (bot, msg , args) =>{
   })
 })
 		}
-if(args.length < 1 && !user && !attach){
-  msg.channel.send("i cant find a attachment, user or image url.")
-  return;
-}else
 	if (!url.startsWith("http")) {
 		if (!user) {
-			url = attach
+			url = msg.attachments.first().url
 			hell(url)
 		} else
 			url = user.avatarURL
