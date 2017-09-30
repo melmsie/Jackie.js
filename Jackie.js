@@ -13,6 +13,8 @@ let games = require("./games.json");
 var oliyBots = config.bots.oliy;
 let botds = config.bots.botdss
 const snekfetch = require("snekfetch");
+var metrics = require('datadog-metrics');
+metrics.init({ host: 'myhost', prefix: 'jj.',apiKey: config.keys.ddkey, });
 /*
 @author : Hansen
       _            _    _
@@ -32,7 +34,6 @@ function serverCount() {
           .set("Authorization", oliyBots)
           .send({"server_count": guildsizes})
           .then(console.log("[oliyBots] Post Stats!"))
-
   snekfetch.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
       .set("Authorization", dBots)
       .send({"server_count": client.guilds.size})
@@ -40,18 +41,15 @@ function serverCount() {
    snekfetch.post(`https://novo.archbox.pro/api/bots/${client.user.id}`)
 		        .set("Authorization", msbots)
 		        .send({"server_count":guildsizes})
-	          .then(console.log("[mbots] Post Stats!"))
-    snekfetch.post(`https://bots.discordlist.net/api.php`)
-         		        .set("token", botds)
-         		        .send({"server_count":guildsizes})
-         	          .then(console.log("[botds] Post Stats!"));
- 	})
+	          .then(console.log("[mbots] Post Stats!"));
+ 	metrics.gauge('guilds', guildsizes);
+		console.log(guildsizes)
+	})
 }
 function setgame(){
 	let gamesnum = Math.floor(Math.random() * games.length)
 bot.user.setPresence({ game: { name: games[gamesnum] + " |+-help", type: 0 } });
 	}
-
 bot.on('ready', () => {
   serverCount();
 	setgame();
@@ -71,12 +69,15 @@ bot.on('guildDelete', (guild) =>{
 });
 
 bot.on('message', msg => {
+	metrics.increment('messagesgot');
 	if (msg.author.bot || !msg.content.startsWith(prefix)){
 		return;
 	} else
 	if(bot.user.id !== "327135412806221826" || prefix !== "+-" || config.ownerID !== "214382760826109953"){
 		return msg.reply("This is a stolen bot.");
 	}else
+		metrics.increment('commandsusage');
+	setgame();
   var user = msg.mentions.users.first();
   const args = msg.content.split(" ").slice(1).join(" ")
   const command = msg.content.split(" ").shift().slice(prefix.length)

@@ -2,7 +2,7 @@ const hmmmm = require('discord.js');
 const config = require("./config.json")
 const logger = require("./logger.js")
 const manager = new hmmmm.ShardingManager(`${__dirname}/Jackie.js`, {
-  totalShards: "auto",
+  totalShards: 1,
   token: config.keys.token
 });
 
