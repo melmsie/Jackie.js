@@ -24,9 +24,9 @@ metrics.init({ host: 'myhost', prefix: 'jj.',apiKey: config.keys.ddkey, });
   \___/ \__,_|\___|_|\_\_|\___|
 
 Big Help: August!
-No Help Melmsie
+No Help 
 Thanks to august for command handler and logger. <3
-Thanks to Melmsie for nothing
+Thanks to Melmsie for something
 */
 
 function serverCount() {
